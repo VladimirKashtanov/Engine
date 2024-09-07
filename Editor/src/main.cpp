@@ -1,8 +1,32 @@
-#include <iostream>
+#include "../includes/Application.hpp"
+
+#include <memory>
+
+
+class AppEditor : public Engine::Application
+{
+	void onUpdate() override
+	{
+
+	}
+
+
+	void onMouseButtonEvent() override
+	{
+
+	}
+
+
+	void onUIDraw() override
+	{
+		
+	}
+};
+
 
 int main()
 {
-	std::cout << "Hello world!" << std::endl;
-
-	return 0;
+	auto pAppEditor = std::make_unique<AppEditor>();
+	int returnCode = pAppEditor->start(1024, 768, "App Editor");
+	return returnCode;
 }
