@@ -2,12 +2,14 @@ cmake_minimum_required(VERSION 3.12)
 
 set(CORE_NAME Core)
 
+#-------------------------#
 #---All private sources---#
 #-------------------------#
 set(CORE_PRIVATE_SOURCES
 	src/Application.cpp
 )
 
+#-------------------------#
 #---All public includes---#
 #-------------------------#
 set(CORE_PUBLIC_INCLUDES
@@ -15,6 +17,7 @@ set(CORE_PUBLIC_INCLUDES
 	includes/Log.hpp
 )
 
+#-----------------#
 #---All sources---#
 #-----------------#
 set(CORE_ALL_FILES
@@ -22,6 +25,7 @@ set(CORE_ALL_FILES
 	${CORE_PUBLIC_INCLUDES}
 )
 
+#-------------------------------#
 #---Add static library "Core"---#
 #-------------------------------#
 add_library(${CORE_NAME} STATIC
@@ -29,18 +33,27 @@ add_library(${CORE_NAME} STATIC
 )
 
 
+#--------------------------#
 #---Add "spdlog" library---#
 #--------------------------#
 add_subdirectory(../external/spdlog ${CMAKE_CURRENT_BINARY_DIR}/spdlog)
 target_link_libraries(${CORE_NAME} PRIVATE spdlog)
 
+#------------------------#
+#---Add "glfw" library---#
+#------------------------#
+add_subdirectory(../external/glfw ${CMAKE_CURRENT_BINARY_DIR}/glfw)
+target_link_libraries(${CORE_NAME} PRIVATE glfw)
 
+
+#------------------------------------------#
 #---View of the file system on VS editor---#
 #------------------------------------------#
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES
 	${CORE_ALL_FILES}
 )
 
+#------------------------#
 #--Compilation options---#
 #------------------------#
 target_include_directories(${CORE_NAME} PUBLIC includes)
