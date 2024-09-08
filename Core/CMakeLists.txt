@@ -7,6 +7,7 @@ set(CORE_NAME Core)
 #-------------------------#
 set(CORE_PRIVATE_SOURCES
 	src/Application.cpp
+	src/Rendering/OpenGL/OpenGL_Renderer.cpp
 )
 
 #-------------------------#
@@ -17,12 +18,22 @@ set(CORE_PUBLIC_INCLUDES
 	includes/Log.hpp
 )
 
+#--------------------------#
+#---All private includes---#
+#--------------------------#
+set(CORE_PRIVATE_INCLUDES
+	includes/Application.hpp
+	includes/Log.hpp
+	src/Rendering/OpenGL/OpenGL_Renderer.hpp
+)
+
 #-----------------#
 #---All sources---#
 #-----------------#
 set(CORE_ALL_FILES
 	${CORE_PRIVATE_SOURCES}
 	${CORE_PUBLIC_INCLUDES}
+	${CORE_PRIVATE_INCLUDES}
 )
 
 #-------------------------------#
